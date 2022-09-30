@@ -15,8 +15,8 @@ export async function itemController() {
         res.json(item);
     })
 
-    router.get('/', async (req, res) => {
-        let item = await itemService.get(req.body.id)
+    router.get('/:id', async (req, res) => {
+        let item = await itemService.get((req.params as any).id)
         res.json(item);
     })
     
@@ -31,8 +31,8 @@ export async function itemController() {
         res.json(item)
     })
     
-    router.delete('/', async (req, res) => {
-        let item = await itemService.delete(req.body.id)
+    router.delete('/:id', async (req, res) => {
+        let item = await itemService.delete((req.params as any).id)
         res.json(item)
     })
 
