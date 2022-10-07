@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Item } from "./entity";
+import { Item, Order, OrderItem } from "./entity";
 
 export class Connection {
     public db: DataSource;
@@ -12,10 +12,10 @@ export class Connection {
             username: "quickOrder",
             password: "user@123",
             database: "quickorder",
-            entities: [Item],
+            entities: [Item, OrderItem, Order],
             synchronize: true,
             logging: false,
-          })
+        })
     }
 
     private async init() {
@@ -24,7 +24,7 @@ export class Connection {
     }
 
     static async getInstance() {
-        if(Connection.connection == null) {
+        if (Connection.connection == null) {
             Connection.connection = new Connection();
             await Connection.connection.init();
         }

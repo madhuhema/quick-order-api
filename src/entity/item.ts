@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { OrderItem } from "./order-item";
 
 export enum ItemType {
     veg = "VEG",
@@ -60,4 +61,10 @@ export class Item {
         enum: ItemSize
     })
     size!: ItemSize
+
+    // @Column()
+    // createdBy!: number
+
+    @OneToMany(() => OrderItem, (order_item) => order_item.item)
+    orders!: OrderItem[];
 }

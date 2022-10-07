@@ -6,13 +6,14 @@ const router = express.Router();
 
 
 export async function itemController() {
+    //To get the connection instance which is a singleton object
     const connection = await Connection.getInstance();
     const db = connection.db;
     const itemService = new ItemService(db);
 
     router.get('/all', async (req, res) => {
-        let item = await itemService.getAll()
-        res.json(item);
+        let items = await itemService.getAll()
+        res.json(items);
     })
 
     router.get('/:id', async (req, res) => {
