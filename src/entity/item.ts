@@ -57,10 +57,11 @@ export class Item {
     prep_time_in_mins!: number;
 
     @Column({
-        type: "enum",
-        enum: ItemSize
+        type: "set",
+        enum: ItemSize,
+        default: ["regular"]
     })
-    size!: ItemSize
+    size!: ItemSize[]
 
     // @Column()
     // createdBy!: number

@@ -21,8 +21,6 @@ export class OrderItemService {
         return this.repository.delete({ orderId, itemId });
     }
 
-
-
     deleteManyWithOrderId(orderId: number) {
         return this.repository.delete({ orderId });
     }
